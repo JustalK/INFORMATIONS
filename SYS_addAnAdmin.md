@@ -26,6 +26,11 @@ If I want to resert the certficat of the ssh connection on linux
 $ ssh-keygen -R  kevin@54.213.111.151
 ```
 
+If I want to remove an user
+```
+$ sudo userdel -r nameuser
+```
+
 
 
 
