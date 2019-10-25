@@ -1,0 +1,26 @@
+{
+	"name": "@latsuj/csv",
+	"version": "2.0.0",
+	"description": "Library of functions for manipulating a csv in node.js",
+	"license": "MIT",
+	"scripts": {
+		"start": "node index.js",
+		"test": "mocha --require @babel/register ./test/tests.js"
+	},
+	"repository": "latsuj/Informations",
+	"main": "index.js",
+	"keywords": [
+		"latsuj",
+		"csv"
+	],
+	"dependencies": {
+		"fast-csv": "^3.4.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.6.4",
+		"@babel/preset-env": "^7.6.3",
+		"@babel/register": "^7.6.2",
+		"chai": "^4.2.0",
+		"mocha": "^6.2.2"
+	}
+}
