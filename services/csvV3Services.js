@@ -24,6 +24,7 @@ const getLegend = async function (file) {
  * @param File file the file that we wanna extract the data
  * @param Array legend the legend of the csv, gonna be use for creating the map of the data
  * @param Bolean hasLegend If true, we gonna skip the first line, if else we take everything
+ * @return Array The data extract from the csv without or with the legend
  */
 const getData = async function (file,legend,hasLegend) {
 	return new Promise((resolve, reject) => {
@@ -44,6 +45,16 @@ const getData = async function (file,legend,hasLegend) {
 	})
 }
 
+/**
+ * Merge the two array together following the the mergeColumn and keep only the final column of both array
+ * @param Array array1 The first set of data
+ * @param Array array2 The second set of data
+ * @param Array mergeColumnsArray1 The name of the column that we gonna use for the merging in the first array1
+ * @param Array mergeColumnsArray2 The name of the column that we gonna use for the merging in the second array2
+ * @param Array finalColumnsArray1 The column that we gonna keep from the array1 after the merging
+ * @param Array finalColumnsArray2 The column that we gonna keep from the array2 after the merging
+ * @return Array The data with only the final column after merging
+ */
 const mergeMap = async function(array1,array2,mergeColumnsArray1,mergeColumnsArray2,finalColumnsArray1,finalColumnsArray2) {
 	let rsl = [], find=false;
 	for(const obj1 of array1) {
@@ -64,16 +75,31 @@ const mergeMap = async function(array1,array2,mergeColumnsArray1,mergeColumnsArr
 }
 
 /**
+ * Create a new column by affecting a function to every element of one column
+ * @param Array array The set of data that we gonna apply the function
+ * @param String nameAffectedColumn The name of the column/field that we gonna apply the function
+ * @param String nameResultColumn The name of the new column
+ * @param Function fc The function that we gonna apply to the column/field nameAffectedColumn
+ * @return Array the array of the obj with the new column
+ */
+const newColumn = function(array,nameAffectedColumn,nameResultColumn,fc) {
+	return array.map(function(x) {
+		let tmp = {};
+		tmp[nameResultColumn] = fc(x[nameAffectedColumn]);		
+		return Object.assign(x,tmp);
+	})
+}
+
+/**
  * Change the field of every object in an array
  * @param Array array The array of the object to modify
  * @param Array columnToReplace The column to replace in the objects
  * @param Array columnReplacer The column that gonna replace the old one
  * @return Array The array with all the columnToReplace removed and columnReplacer added
  */
-const rearangeMap = async function(array,columnToReplace,columnReplacer) {
+const rearangeMap = function(array,columnToReplace,columnReplacer) {
 	if(columnToReplace.length!=columnReplacer.length) throw "column are different";
-	array = array.map(x => rearangeObject(x,columnToReplace,columnReplacer));
-	return array;
+	return array.map(x => rearangeObject(x,columnToReplace,columnReplacer));
 }
 
 /**
@@ -83,20 +109,18 @@ const rearangeMap = async function(array,columnToReplace,columnReplacer) {
  * @param Array columnReplacer The column that gonna replace the old one
  * @return Object The object with all the columnToReplace removed and columnReplacer added
  */
-function rearangeObject(obj,columnToReplace,columnReplacer) {
+const rearangeObject = function (obj,columnToReplace,columnReplacer) {
 	let tmp = {};
 	columnReplacer.map((y,i) => tmp[y]=obj[columnToReplace[i]]);
 	columnToReplace.map(y => delete obj[y]);
-	Object.assign(obj,tmp);
-	return obj;
+	return Object.assign(obj,tmp);
 }
 
-const services = {
+module.exports = {
 	getLegend,
 	getData,
 	mergeMap,
 	rearangeMap,
-	rearangeObject
+	rearangeObject,
+	newColumn
 }
-
-module.exports = services;
