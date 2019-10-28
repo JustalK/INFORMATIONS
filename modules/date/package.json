@@ -1,7 +1,7 @@
 {
-	"name": "@latsuj/csv",
-	"version": "3.0.0",
-	"description": "Library of functions for manipulating a csv in node.js",
+	"name": "@latsuj/date",
+	"version": "1.0.0",
+	"description": "Library of functions for manipulating a date in node.js",
 	"license": "MIT",
 	"scripts": {
 		"start": "node index.js",
@@ -11,11 +11,8 @@
 	"main": "index.js",
 	"keywords": [
 		"latsuj",
-		"csv"
+		"date"
 	],
-	"dependencies": {
-		"fast-csv": "^3.4.0"
-	},
 	"devDependencies": {
 		"@babel/core": "^7.6.4",
 		"@babel/preset-env": "^7.6.3",
