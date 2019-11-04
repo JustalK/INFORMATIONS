@@ -22,4 +22,7 @@ After you can check with : node -v
 If you are using n, you can updating node like this : n 12.13.0
 You can after check if the version has been choose with : n
 
+Dont forget to restart the server and the pm2 after : sudo reboot
+and : pm2 start index.js
+
 ```
