@@ -30,3 +30,10 @@ let arr = [0,1,[2,3]]
 arr.flat()
 //output : [0,1,2,3]
 ```
+
+## Create an object with a key variable
+
+```
+let key="lol"
+let obj = {[key]:"qwerty"}
+```
