@@ -1,5 +1,20 @@
 # Change the node version
 
+## Node version and PM2 (and mb some application)
+
+By default, pm2 dont use the node version on nvm but either the local version of node : /usr/bin/node or /usr/local/bin/node.
+It's a good trick to link this binaries to the nvm version with this command :
+
+```
+sudo ln -s /home/ubuntu/.nvm/versions/node/v12.13.0/bin/node /usr/local/bin/node
+```
+
+## Check config of nvm
+
+```
+nvm list
+```
+
 ## Check the node version on the server and on the running app
 
 ```
