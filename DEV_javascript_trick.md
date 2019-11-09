@@ -37,3 +37,14 @@ arr.flat()
 let key="lol"
 let obj = {[key]:"qwerty"}
 ```
+
+## Getting uniqueness of an array of object
+
+We just check that the index of the first element with "findIndex" is equal to the index of the current element.
+If the element is unique or if it's the first we pass through it, that would be equal.
+
+```
+const filters = documents.filter((x,i) => {
+	return documents.findIndex(y=>y.label==x.label && y.value==x.value).index == i
+});
+```
