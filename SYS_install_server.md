@@ -133,6 +133,64 @@ node index.js
 
 Eveything at this moment should work fine.
 
+## Install npm
 
+```
+npm install npm@latest -g
+```
 
+## Install pm2
 
+```
+sudo npm i -g pm2 
+```
+
+## Start the application using pm2
+
+```
+pm2 start node index.js
+```
+
+## Enable the firewall and open the port
+
+Install the firewall and check his status
+
+```
+sudo apt-get install ufw
+sudo ufw status
+```
+
+Open the differents port.
+Attention, dont forget to open the port ssh or it will be impossible to access the server
+
+```
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw allow xxxx
+```
+
+The activate the firewall
+
+```
+sudo ufw enable
+```
+
+## Trying to access from outside (postman)
+
+At this moment, it should be possible to access from outside.
+If it does not work, the first thing to check if it's the application work on the server with curl :
+
+```
+curl http://localhost:5000/
+```
+
+If it work well, the port are the problem, try opening the port in the ip table :
+
+```
+iptables -I INPUT -p tcp --dport 3000 -j ACCEPT
+```
+
+Also check on the AWS if the port are open.
+
+Check the config of the environnement file. Mb trying to replace localhost by 0.0.0.0
