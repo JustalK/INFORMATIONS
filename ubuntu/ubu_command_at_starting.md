@@ -10,5 +10,5 @@ If it's the first time, you will have to select the editor. Personally, I choose
 Then type the command, you wanna use with the reboot statement.
 
 ```
-@reboot my_command
+@reboot root my_command
 ```
