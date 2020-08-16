@@ -21,6 +21,7 @@ class Indicator():
             AppIndicator3.IndicatorCategory.SYSTEM_SERVICES)
         self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)       
         self.indicator.set_menu(self.create_menu())
+        self.indicator.set_label("Latsuj", self.app)
 
     def getscripts(self):
         cmd_data = [l for l in open(
