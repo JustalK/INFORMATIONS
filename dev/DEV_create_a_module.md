@@ -49,7 +49,24 @@ https://coveralls.io/
 2. Install the dependencies (https://github.com/nickmerwin/node-coveralls)
 
 ```
-npm install coveralls --save-dev
+npm install nyc coveralls --save-dev
+```
+
+3. Add the scripts
+
+```
+{
+  "script": {
+     "test": "nyc --reporter=html --reporter=text ava",
+     "coverage": "nyc report --reporter=text-lcov | coveralls"
+  }
+}
+```
+
+4. Add the script coverage at the end of the `.travis.yml`
+
+```
+after_success: npm run coverage
 ```
 
 ## SHIELDS
