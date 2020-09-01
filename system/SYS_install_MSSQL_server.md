@@ -41,7 +41,7 @@ curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /et
 Then install the server
 
 ```
-sudo apt-get update 
+sudo apt-get update
 sudo apt-get install mssql-tools unixodbc-dev
 ```
 
@@ -69,28 +69,31 @@ sqlcmd -S localhost -U SA -P 'PASSWORD'
 ## Restore a database
 
 ```
-sqlcmd -S localhost -U SA -Q "RESTORE DATABASE [demodb] FROM DISK = N'/home/rumarocket/TEST/v.bak' WITH FILE = 1, NOUNLOAD, REPLACE, NORECOVERY, STATS = 5"
+sqlcmd -S localhost -U SA -Q "RESTORE DATABASE [demodb] FROM DISK = N'/home/xxxxxxx/TEST/v.bak' WITH FILE = 1, NOUNLOAD, REPLACE, NORECOVERY, STATS = 5"
 ```
 
-For seing the file inside the bak
+## Some useful commands
+
+1. Show all the tables inside the database
+
+```
+SELECT * FROM information_schema.TABLES
+GO
+```
+
+2. Restore db from bak FILE
+
+```
+RESTORE DATABASE vehicledb FROM DISK = '/home/xxxxxxx/Documents/vehicledb.bak' WITH MOVE 'vehicledb' TO '/var/opt/mssql/data/vehicledb.mdf', MOVE 'vehicledb_log' TO '/var/opt/mssql/data/vehicledb_log.ldf'
+GO
+```
+
+3. Show the informations of the bak FILE
 
 ```
 RESTORE FILELISTONLY FROM DISK = '/var/opt/mssql/backup/YourDB.bak'
 GO
 
-sqlcmd -S localhost -U SA -Q "RESTORE FILELISTONLY FROM DISK = N'/home/rumarocket/TEST/v.bak'"
+sqlcmd -S localhost -U SA -Q "RESTORE FILELISTONLY FROM DISK = N'/home/xxxxxxx/Documents/v.bak'"
 GO
-
-vehicledb
-C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\vehicledb.mdf 
-C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\vehicledb_log.ldf
-
-RESTORE DATABASE vehicledb FROM DISK = '/home/rumarocket/TEST/vehicledb.bak' WITH MOVE 'vehicledb' TO '/var/opt/mssql/data/vehicledb.mdf', MOVE 'vehicledb_log' TO '/var/opt/mssql/data/vehicledb_log.ldf'
-
 ```
-
-
-
-
-
-
