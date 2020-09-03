@@ -2,4 +2,5 @@
 
 ## Tkinter Tutorial
 
-1. https://realpython.com/python-gui-tkinter/
+1. **GUI:** https://realpython.com/python-gui-tkinter/
+2. **Unit Test:** https://realpython.com/python-testing/
