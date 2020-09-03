@@ -1,5 +1,11 @@
 # How to handle dependencies with Python
 
+## Package installation
+
+```
+sudo apt-get install python3-pip
+```
+
 ## Dependencies installation
 
 For installing dependencies, just run the command :
