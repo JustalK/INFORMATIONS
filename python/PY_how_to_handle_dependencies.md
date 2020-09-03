@@ -11,7 +11,7 @@ sudo apt-get install python3-pip
 For installing dependencies, just run the command :
 
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## Example requierements file
