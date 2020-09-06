@@ -12,3 +12,10 @@ git config --global credential.helper "cache --timeout=3600"
 git rm --cached filename
 git rm --cached -r foldername
 ```
+
+3. Adding tag to git publish
+
+```
+git tag <tagname>
+git push origin --tags
+```
