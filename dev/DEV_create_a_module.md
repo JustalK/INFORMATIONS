@@ -128,7 +128,16 @@ npm install nyc coveralls --save-dev
 }
 ```
 
-4. Add the script coverage at the end of the `.travis.yml`
+3. Visit coveralls website and active the repository
+
+4. Add the file .coveralls.yml with the right data propose on the website
+
+```
+service_name: travis-pro
+repo_token: 
+```
+
+5. Add the script coverage at the end of the `.travis.yml`
 
 ```
 after_success: npm run coverage
