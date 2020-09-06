@@ -6,7 +6,7 @@
 1. Login to your npmjs account with
 
 ```
-npm login
+c
 ```
 
 2. Initialize the project with the right scope
@@ -36,6 +36,19 @@ npm publish
 
 ## TRAVIS
 
+1. Create a .travis.yml in the root of the module
+
+```
+language: node_js
+node_js:
+  - 14
+  - 12
+  - 10
+  - 9
+  - 8
+after_success: npm run coverage
+```
+
 1. Signing to travis
 
 ```
@@ -48,6 +61,46 @@ https://travis-ci.com/
 
 ```
 In a repository => Setting => cron job
+```
+
+## LINTER
+
+1. Install the linter `xo`
+
+```
+npm install xo --save-dev
+```
+
+2. Create the config file .xo-config.js at the root of the project
+
+```
+module.exports = {
+    "esnext": true,
+    "rules" : {
+        "camelcase": 0,
+        "no-unused-vars": 0,
+        "unicorn/filename-case": 0
+    }
+}
+```
+
+## TESTS
+
+1. Install the test executable `ava`
+
+```
+npm install ava --save-dev
+```
+
+2. Create a stupid tests inside the `tests` repository
+
+```
+const test = require('ava');
+const m = require('../src');
+
+test('[INDEX] Simple useless test', t => {
+	t.assert(1 !== 10);
+});
 ```
 
 ## COVERALLS
