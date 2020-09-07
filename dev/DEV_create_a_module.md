@@ -134,7 +134,7 @@ npm install nyc coveralls --save-dev
 
 ```
 service_name: travis-pro
-repo_token: 
+repo_token:
 ```
 
 5. Add the script coverage at the end of the `.travis.yml`
@@ -151,4 +151,5 @@ after_success: npm run coverage
 node-current
 travis
 david
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
 ```
