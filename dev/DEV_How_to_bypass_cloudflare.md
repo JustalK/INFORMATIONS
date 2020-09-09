@@ -16,3 +16,12 @@ CloudFail is a tactical reconnaissance tool which aims to gather enough informat
 ```
 python3 cloudfail.py --target animeland.us
 ```
+
+## Censys
+
+Using the website Censys for finding the certificate and reverse it into IPV4
+
+Command to type inside the search of certificate
+```
+parsed.names: animeland.us and tags.raw: trusted
+```
