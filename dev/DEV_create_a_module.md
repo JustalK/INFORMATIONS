@@ -26,6 +26,16 @@ npm publish --access public
 
 ```
 npm version major
+npm version minor
+npm version patch
+```
+
+Each command modify the version according to the description under :
+
+```
+major => x.0.0
+minor => 0.x.0
+patch => 0.0.x
 ```
 
 5. Then publish without indicating the access
