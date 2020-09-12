@@ -1,12 +1,30 @@
 # How to create a module for npmjs
 
+## Setting up the project fast
+
+1. Create a directory for the `src` and create a file `index.js` with just one line of code :
+
+```
+module.exports = {};
+```
+
+2. Create a directory for the `tests` and create a file `tests_index.js` with just that :
+
+```
+const test = require('ava');
+const m = require('../src');
+
+test('[DYNAMIC] Testing the search on the different website', t => {
+	t.true(true);
+});
+```
 
 ## NPMJS
 
 1. Login to your npmjs account with
 
 ```
-c
+npm login
 ```
 
 2. Initialize the project with the right scope
@@ -15,6 +33,29 @@ c
 npm init --scope=@justalk
 
 ```
+
+3. In the `package.json` created, add the following script and package :
+
+```
+"scripts": {
+  "test": "xo && nyc --reporter=html --reporter=text ava --verbose --timeout=1m",
+  "test-no": "ava tests/*.js --verbose --timeout=1m",
+  "coverage": "nyc report --reporter=text-lcov | coveralls"
+},
+"devDependencies": {
+  "ava": "^3.12.1",
+  "coveralls": "^3.1.0",
+  "nock": "^13.0.4",
+  "nyc": "^15.1.0",
+  "xo": "^0.33.1"
+}
+```
+
+4. Install everything with `npm install`
+
+
+
+## NPMJS Publishing
 
 3. Publish the package without forgetting the access to public
 

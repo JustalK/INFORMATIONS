@@ -29,3 +29,9 @@ git rebase --skip
 git pull --rebase upstream dev
 git reset --hard HEAD
 ```
+
+5. Reset to a specific commit
+
+```
+git reset --hard 0d1d7fc32
+```
