@@ -19,3 +19,13 @@ git rm --cached -r foldername
 git tag <tagname>
 git push origin --tags
 ```
+
+4. Rebase the branch to the last commit
+
+```
+git remote add upstream https://github.com/Kylart/MalScraper
+git pull --rebase upstream master
+git rebase --skip
+git pull --rebase upstream dev
+git reset --hard HEAD
+```
