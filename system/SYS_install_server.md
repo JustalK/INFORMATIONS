@@ -51,6 +51,13 @@ Install the package manager
 sudo apt install npm
 ```
 
+if an error message `dpkg was interrupted` show up :
+
+```
+sudo dpkg --configure -a
+```
+
+
 ## Installing the node legacy and check the version of node
 
 
