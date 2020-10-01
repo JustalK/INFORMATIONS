@@ -31,6 +31,9 @@ For this version, since I was welcomed with "you are already use the last versio
 sudo do-release-upgrade -d
 ```
 
+if the server is stucked on a command, you need to log out and this message show up `ssh_exchange_identification: read: Connection reset by peer`.
+You will need to restart the server from the web command.
+
 
 ## Get the project
 
@@ -142,7 +145,7 @@ npm install npm@latest -g
 ## Install pm2
 
 ```
-sudo npm i -g pm2 
+sudo npm i -g pm2
 ```
 
 ## Start the application using pm2
