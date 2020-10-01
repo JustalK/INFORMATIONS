@@ -135,6 +135,12 @@ sudo apt-get install -y mongodb-org
 sudo mongod --fork --logpath /var/log/mongodb/mongod.log
 ```
 
+if an error `child process failed, exited with error number 100` show up, the data folder does not exist
+
+```
+sudo mkdir /data/db
+```
+
 ## Testing if the application is working fine
 
 ```
