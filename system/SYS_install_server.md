@@ -100,6 +100,8 @@ If any error happen before the mongodb error because it has not been installed y
 
 ```
 node index.js
+or
+npm start
 ```
 
 ## Installing mongoDB
