@@ -1,5 +1,20 @@
 # Change the node version
 
+## nvm install
+
+For installing nvm :
+
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.1/install.sh | bash
+```
+
+
+After installing nvm, if an error saying 'nmv command does not exist'. Restart the terminal or enter this command :
+
+```
+source ~/.nvm/nvm.sh
+```
+
 ## Node version and PM2 (and mb some application)
 
 By default, pm2 dont use the node version on nvm but either the local version of node : /usr/bin/node or /usr/local/bin/node.
@@ -13,6 +28,20 @@ sudo ln -s /home/ubuntu/.nvm/versions/node/v12.13.0/bin/node /usr/local/bin/node
 
 ```
 nvm list
+```
+
+## Check list of version of nodejs
+
+For checking online :
+
+```
+nvm ls-remote
+```
+
+For checking the version locally installed :
+
+```
+nvm ls
 ```
 
 ## Check the node version on the server and on the running app
