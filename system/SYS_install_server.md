@@ -43,6 +43,12 @@ Clone an existing project on bitbucket
 git clone https://yyyyy@bitbucket.org/xxxxx.git
 ```
 
+if github is not installed :
+
+```
+apt-get install git
+```
+
 ## Installing npm
 
 Install the package manager
