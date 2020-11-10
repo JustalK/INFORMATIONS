@@ -1,5 +1,5 @@
-# How to create a module for npmjs
 
+# How to create a module for npmjs
 ## Setting up the project fast
 
 1. Create a directory for the `src` and create a file `index.js` with just one line of code :
