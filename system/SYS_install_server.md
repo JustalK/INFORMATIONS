@@ -72,7 +72,12 @@ The version of node should be the last one
 ```
 sudo apt install nodejs-legacy
 node -v
+```
 
+if it does not work, use the more updated one :
+
+```
+sudo apt install nodejs
 ```
 
 ## Installing last version of nvm
@@ -81,9 +86,11 @@ Look the available version of nvm on the repository : https://github.com/nvm-sh/
 Then install the last version of nvm and restart the server for being able to use it.
 
 ```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
 sudo reboot 1
 ```
+
+DO NOT FORGET TO REBOOT !
 
 ## Installing the last version of nodejs
 
@@ -91,7 +98,7 @@ Once restarted, check what is the lastest LTS version and install it
 
 ```
 nvm list-remote
-nvm install v14.0.0
+nvm install v14.15.0
 ```
 
 ## Installing the package of the project
@@ -115,7 +122,7 @@ npm start
 Check on the official website the last version available : https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
 ```
-wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
 ```
 
 It should return a OK.
@@ -209,7 +216,10 @@ If it does not work, the first thing to check if it's the application work on th
 curl http://localhost:5000/
 ```
 
-If it work well, the port are the problem, try opening the port in the ip table :
+You might have to change the config in the env file
+
+
+If it does not work, the port are the problem, try opening the port in the ip table :
 
 ```
 iptables -I INPUT -p tcp --dport 3000 -j ACCEPT
