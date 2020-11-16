@@ -35,8 +35,34 @@ sudo systemctl status jenkins
 
 3. Use the `LOG TEXT` area for trigger script after the build of jenkins
 
+```
+npm install
+npm run seed
+npm run build
+pm2 start npm -- start
+```
+
 PS: For PM2, you have to be careful of the user using the script. With jenkins, the script is run by `jenkins` user.
 So everything will be accesible with `sudo su jenkins`
+
+4. On the project, activate `GitHub hook trigger for GITScm polling`
+
+5. On the same page, activate GitHub Project with the url of the project `https://github.com/JustalK/PORTFOLIO/`
+
+6. In Source Code Management, put the repository without the credential. URL : "https://github.com/JustalK/PORTFOLIO.git"
+
+7. On github, in the setting of the project. Create a new hook with the following url : `http://ip-of-server:port/github-webhook/` with `application-json` and select `Let me select individual...` for pushes and pull
+
+PS: For debugging the github event, you can use this page :
+https://support.cloudbees.com/hc/en-us/articles/224621648-GitHub-Webhook-Troubleshooting
+
+Create a logger for `ALL` of this LOG :
+
+```
+hudson.plugins.git.GitStatus ALL
+com.cloudbees.jenkins.GitHubWebHook - ALL
+org.jenkinsci.plugins.github - ALL
+```
 
 ## Connecting to GITHUB
 
