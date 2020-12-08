@@ -14,7 +14,7 @@
 		"csv"
 	],
 	"dependencies": {
-		"fast-csv": "^3.4.0"
+		"fast-csv": "^4.3.6"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.6.4",
