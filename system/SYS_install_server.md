@@ -86,7 +86,7 @@ Look the available version of nvm on the repository : https://github.com/nvm-sh/
 Then install the last version of nvm and restart the server for being able to use it.
 
 ```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 sudo reboot 1
 ```
 
