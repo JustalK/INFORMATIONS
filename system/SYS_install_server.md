@@ -98,7 +98,7 @@ Once restarted, check what is the lastest LTS version and install it
 
 ```
 nvm list-remote
-nvm install v14.15.0
+nvm install v14.16.1
 ```
 
 ## Installing the package of the project
