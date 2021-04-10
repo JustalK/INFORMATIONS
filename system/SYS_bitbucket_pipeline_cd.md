@@ -6,36 +6,69 @@
 2. Enter the command :
 
 ```
-ssh-keygen
+$ ssh-keygen
 ```
 
 3. Press enter until you get the image of the SHH
 4. List the contents of ssh to view the key files :
 
 ```
-ls ~/.ssh
+$ ls ~/.ssh
 ```
 
 5. Start the agent with :
 
 ```
-eval `ssh-agent`
+$ eval `ssh-agent`
 ```
 
 6. Add the private key to ssh :
 
 ```
-ssh-add ~/.ssh/id_rsa
+$ ssh-add ~/.ssh/id_rsa
 ```
 
-7. Copy the public key :
+7. Paste it inside the *Repository setting* in *SSH key*
+8. Add the existing key
+9. Copy/Paste the public key :
 
 ```
-cat ~/.ssh/id_rsa.pub
+$ cat ~/.ssh/id_rsa.pub
 ```
 
-8. Paste it inside the *Repository setting* in *Access key*
-9. The SSH key is now config.
+10. Copy/Paste the private key :
+
+```
+$ cat ~/.ssh/id_rsa
+```
+
+11. Fetch the host by adding the IP of the server
+12. Add the host
+
+13. Come back on the server, and run :
+
+```
+$ ssh-copy-id -i ~/.ssh/id_rsa username@IP
+```
+
+if you get an error about permission, you need to create an user for it :
+
+```
+$ sudo adduser newuser --disabled-password
+$ sudo su - newuser
+$ mkdir .ssh
+$ chmod 700 .ssh
+$ touch .ssh/authorized_keys
+$ chmod 600 .ssh/authorized_keys
+$ nano .ssh/authorized_keys
+```
+
+And then copy the public key inside the file *authorized_keys*,
+once done, restart the sshd service (in root mode if needed) :
+
+```
+$ sudo systemctl restart sshd
+```
 
 ## Create the variable inside bitbucket
 
@@ -90,3 +123,29 @@ pipelines:
 ```
 
 ## Modify the bitbucket-pipelines.yml
+
+Making the modification for a pipeline deploy on development brancg
+
+```
+image: atlassian/default-image:2
+
+pipelines:
+  branches:  # Pipelines for the development
+    development:
+      - step:
+           name: Deploy to dev
+           deployment: production
+           script:
+             - echo "Deploying to dev environment"
+             - pipe: atlassian/scp-deploy:0.3.3
+               variables:
+                 USER: $SERVER_USER
+                 SERVER: $SERVER_IP_DEV
+                 REMOTE_PATH: '/home/kevin'
+                 LOCAL_PATH: $BITBUCKET_CLONE_DIR
+             - pipe: atlassian/ssh-run:0.2.2
+               variables:
+                 SSH_USER: $SERVER_USER
+                 SERVER: $SERVER_IP_DEV
+                 COMMAND: 'bash ./deploy.sh'
+```
