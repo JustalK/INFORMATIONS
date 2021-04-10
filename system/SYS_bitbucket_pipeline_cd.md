@@ -149,3 +149,7 @@ pipelines:
                  SERVER: $SERVER_IP_DEV
                  COMMAND: 'bash ./deploy.sh'
 ```
+
+## Modify the slack settings
+
+In the setting of the project you can also add a notification system depending of if the push to production has been successful or not.
