@@ -5,5 +5,10 @@
 
 ```
 rm -rf ~/.pm2/logs/*
+```
 
+## Start PM2 process with a name
+
+```
+pm2 start npm --name "transcom" -- start
 ```
