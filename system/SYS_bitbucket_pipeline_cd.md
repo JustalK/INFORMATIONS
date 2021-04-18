@@ -70,6 +70,12 @@ once done, restart the sshd service (in root mode if needed) :
 $ sudo systemctl restart sshd
 ```
 
+And finally for testing, run this command :
+
+```
+$ ssh -i ~/.ssh/id_rsa username@IP
+```
+
 ## Create the variable inside bitbucket
 
 1. Go on bitbucket in the project
