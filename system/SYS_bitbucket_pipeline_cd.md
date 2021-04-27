@@ -3,6 +3,15 @@
 ## Create an SSH on the server
 
 1. Connect to the server by SSH
+2. Create an user
+
+```
+$ sudo adduser newuser --disabled-password
+$ sudo su - newuser
+$ mkdir .ssh
+$ chmod 700 .ssh
+```
+
 2. Enter the command :
 
 ```
@@ -10,7 +19,7 @@ $ ssh-keygen
 ```
 
 3. Press enter until you get the image of the SHH
-4. List the contents of ssh to view the key files :
+4. List the contents of ssh to view the key files, you should see 3 files :
 
 ```
 $ ls ~/.ssh
@@ -28,27 +37,32 @@ $ eval `ssh-agent`
 $ ssh-add ~/.ssh/id_rsa
 ```
 
-7. Paste it inside the *Repository setting* in *SSH key*
-8. Add the existing key
-9. Copy/Paste the public key :
+if the file are too open, restrict the permission:
 
 ```
-$ cat ~/.ssh/id_rsa.pub
+chmod 400 ~/.ssh/id_rsa
 ```
 
-10. Copy/Paste the private key :
+7. Go inside the *Repository setting* in *SSH key*
+8. You might be ask to activate the pipeline
+9. Copy/Paste the private key :
 
 ```
 $ cat ~/.ssh/id_rsa
 ```
 
+10. Copy/Paste the public key :
+
+```
+$ cat ~/.ssh/id_rsa.pub
+```
+
 11. Fetch the host by adding the IP of the server
 12. Add the host
-
 13. Come back on the server, and run :
 
 ```
-$ ssh-copy-id -i ~/.ssh/id_rsa username@IP
+$ sudo ssh-copy-id -i ~/.ssh/id_rsa username@IP
 ```
 
 if you get an error about permission, you need to create an user for it :
