@@ -43,6 +43,12 @@ if the file are too open, restrict the permission:
 chmod 400 ~/.ssh/id_rsa
 ```
 
+7. copy the public key inside the file *authorized_keys*
+
+```
+$ cat ~/.ssh/id_rsa.pub
+```
+
 7. Go inside the *Repository setting* in *SSH key*
 8. You might be ask to activate the pipeline
 9. Copy/Paste the private key :
@@ -62,26 +68,7 @@ $ cat ~/.ssh/id_rsa.pub
 13. Come back on the server, and run :
 
 ```
-$ sudo ssh-copy-id -i ~/.ssh/id_rsa username@IP
-```
-
-if you get an error about permission, you need to create an user for it :
-
-```
-$ sudo adduser newuser --disabled-password
-$ sudo su - newuser
-$ mkdir .ssh
-$ chmod 700 .ssh
-$ touch .ssh/authorized_keys
-$ chmod 600 .ssh/authorized_keys
-$ nano .ssh/authorized_keys
-```
-
-And then copy the public key inside the file *authorized_keys*,
-once done, restart the sshd service (in root mode if needed) :
-
-```
-$ sudo systemctl restart sshd
+$ ssh-copy-id -i ~/.ssh/id_rsa username_newuser@ip_server
 ```
 
 And finally for testing, run this command :
@@ -168,6 +155,23 @@ pipelines:
                  SSH_USER: $SERVER_USER
                  SERVER: $SERVER_IP_DEV
                  COMMAND: 'bash ./deploy.sh'
+```
+
+## Create a deploy script on the server like this one
+
+```
+##!/usr/bin/env bash
+
+echo '## deploy.sh: Entering the directory on the server'
+cd ./build
+#echo '## deploy.sh: Pulling the code from repository'
+#git pull origin master
+echo '## deploy.sh: Installing the packages in any case there is new one'
+npm install
+#echo '## deploy.sh: Seeding the database'
+npm run seed
+#echo '## deploy.sh: Reloading the nodes'
+pm2 reload all
 ```
 
 ## Modify the slack settings
