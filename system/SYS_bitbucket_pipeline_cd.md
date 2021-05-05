@@ -43,14 +43,14 @@ if the file are too open, restrict the permission:
 chmod 400 ~/.ssh/id_rsa
 ```
 
-7. copy the public key inside the file *authorized_keys*
+7. copy the public key inside the file *authorized_keys* in ~/.ssh/authorized_keys
 
 ```
 $ cat ~/.ssh/id_rsa.pub
 ```
 
-7. Go inside the *Repository setting* in *SSH key*
-8. You might be ask to activate the pipeline
+7. On bitbucket, go inside the *Repository setting* in *SSH key*
+8. Activate the pipeline if asked
 9. Copy/Paste the private key :
 
 ```
@@ -63,7 +63,12 @@ $ cat ~/.ssh/id_rsa
 $ cat ~/.ssh/id_rsa.pub
 ```
 
-11. Fetch the host by adding the IP of the server
+11. Fetch the host by adding the public IP of the server :
+
+```
+$ dig +short myip.opendns.com @resolver1.opendns.com
+```
+
 12. Add the host
 13. Come back on the server, and run :
 
@@ -77,14 +82,46 @@ And finally for testing, run this command :
 $ ssh -i ~/.ssh/id_rsa username@IP
 ```
 
+## Create a deploy script
+
+1. On the server create a file **deploy.sh** with the following script inside :
+
+```
+##!/usr/bin/env bash
+
+echo '## deploy.sh: Entering the directory on the server'
+cd ./build
+#echo '## deploy.sh: Pulling the code from repository'
+#git pull origin master
+echo '## deploy.sh: Installing the packages in any case there is new one'
+npm install
+#echo '## deploy.sh: Seeding the database'
+npm run seed
+#echo '## deploy.sh: Reloading the nodes'
+pm2 reload all
+```
+
+## Change the name of the branch
+
+1. On bitbucket, Go inside the *Repository setting* in *Deployement*
+2. Change the following name of the branches (be careful, uppercase and lowercase has it's importance) :
+
+```
+Staging => development
+Production => production
+```
+
 ## Create the variable inside bitbucket
 
-1. Go on bitbucket in the project
-2. Repository setting
-3. Repository variable
-4. Configure your variables there
+1. On bitbucket, Go inside the *Repository setting* in *Repository variables*
+2. Configure the following variables :
 
-## Create a default bitbucket-pipelines.yml
+```
+SERVER_IP_DEV: The public IP of the server
+SERVER_USER: The username of the ssh account chosen at the first step of this document
+```
+
+## Create a default bitbucket-pipelines.yml (OPTIONNAL)
 
 1. Go on bitbucket in the project
 2. Go in the tabs pipeline
@@ -129,9 +166,9 @@ pipelines:
           - echo "Your deployment to production script goes here..."
 ```
 
-## Modify the bitbucket-pipelines.yml
+## Modify or create the bitbucket-pipelines.yml
 
-Making the modification for a pipeline deploy on development brancg
+1. Create a **bitbucket-pipelines.yml** file at the root of your project
 
 ```
 image: atlassian/default-image:2
@@ -155,23 +192,6 @@ pipelines:
                  SSH_USER: $SERVER_USER
                  SERVER: $SERVER_IP_DEV
                  COMMAND: 'bash ./deploy.sh'
-```
-
-## Create a deploy script on the server like this one
-
-```
-##!/usr/bin/env bash
-
-echo '## deploy.sh: Entering the directory on the server'
-cd ./build
-#echo '## deploy.sh: Pulling the code from repository'
-#git pull origin master
-echo '## deploy.sh: Installing the packages in any case there is new one'
-npm install
-#echo '## deploy.sh: Seeding the database'
-npm run seed
-#echo '## deploy.sh: Reloading the nodes'
-pm2 reload all
 ```
 
 ## Modify the slack settings
