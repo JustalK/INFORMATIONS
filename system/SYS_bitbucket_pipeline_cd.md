@@ -101,6 +101,45 @@ npm run seed
 pm2 reload all
 ```
 
+## Allow the pull by SSH key
+
+1. On bitbucket, Go inside the *Repository setting* in *Access Key*
+2. Add you private key there, the label does not have importance :
+
+```
+$ cat ~/.ssh/id_rsa
+```
+
+3. Make sure you have define the permission properly for the SSH private key :
+
+```
+$ chmod 400 ~/.ssh/id_rsa
+```
+
+4. On the server, make sure you are using SHH for the git commands :
+
+ssh://git@bitbucket.org/<workspace_ID>/<repo_name>.git
+
+```
+$ git remote set-url origin git@bitbucket.org:rumarocket2/actionsmicroservice.git
+```
+
+5. Create the file config for git commands :
+
+```
+$ git config core.sshCommand "ssh -i ~/.ssh/id_rsa"
+$ nano ~/.ssh/config
+```
+
+write in the file :
+
+```
+Host github.com
+  IdentityFile ~/.ssh/id_rsa
+```
+
+6. Test if you can get pull without a password asked
+
 ## Change the name of the branch
 
 1. On bitbucket, Go inside the *Repository setting* in *Deployement*
