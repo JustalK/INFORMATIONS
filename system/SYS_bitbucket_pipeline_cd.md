@@ -124,21 +124,7 @@ ssh://git@bitbucket.org/<workspace_ID>/<repo_name>.git
 $ git remote set-url origin git@bitbucket.org:rumarocket2/actionsmicroservice.git
 ```
 
-5. Create the file config for git commands :
-
-```
-$ git config core.sshCommand "ssh -i ~/.ssh/id_rsa"
-$ nano ~/.ssh/config
-```
-
-write in the file :
-
-```
-Host github.com
-  IdentityFile ~/.ssh/id_rsa
-```
-
-6. Test if you can get pull without a password asked
+5.Do one git pull for accepting the fingerprint and checking you dont need the password anymore
 
 ## Change the name of the branch
 
