@@ -23,3 +23,11 @@ sudo docker restart inpsyche_nudgyt
 ```
 $ sudo docker exec -it <name_of_container> curl http://localhost:8080
 ```
+
+## Free memory from the image
+
+If there is `no space left on device` :
+
+```
+docker system prune
+```
