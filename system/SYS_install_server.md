@@ -21,6 +21,11 @@ sudo apt install update-manager-core
 sudo do-release-upgrade
 ```
 
+or for a short version
+```
+sudo apt update && sudo apt --yes upgrade && sudo apt dist-upgrade && sudo apt-get autoremove && sudo apt install update-manager-core && sudo do-release-upgrade
+```
+
 After the server reboot, check again the version of the ubuntu
 
 ## Upgrading to the last version of ubuntu 20
@@ -54,7 +59,7 @@ apt-get install git
 Install the package manager
 
 ```
-sudo apt install npm
+sudo apt --yes install npm
 ```
 
 if an error message `dpkg was interrupted` show up :
@@ -88,6 +93,11 @@ Then install the last version of nvm and restart the server for being able to us
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 sudo reboot 1
+```
+
+if curl is not installed, you can run
+```
+sudo apt --yes install curl
 ```
 
 DO NOT FORGET TO REBOOT !
