@@ -1,5 +1,3 @@
-# How to create a continuous development with the pipeline of bitbucket
-
 ## Create an SSH on the server
 
 1. Connect to the server by SSH
