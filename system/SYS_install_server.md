@@ -186,6 +186,12 @@ npm install npm@latest -g
 sudo npm i -g pm2
 ```
 
+In case in does not work, you can install it with :
+
+```
+sudo apt-get install npm
+```
+
 ## Start the application using pm2
 
 ```
@@ -208,6 +214,9 @@ Attention, dont forget to open the port ssh or it will be impossible to access t
 sudo ufw allow ssh
 sudo ufw allow http
 sudo ufw allow https
+sudo ufw allow 3000
+sudo ufw allow 4000
+sudo ufw allow 5000
 sudo ufw allow xxxx
 ```
 

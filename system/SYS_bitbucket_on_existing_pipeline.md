@@ -3,9 +3,9 @@
 ## Create an user
 
 ```
-$ sudo adduser newuser --disabled-password
-$ sudo passwd newuser
-$ sudo su - newuser
+$ sudo adduser kevin
+$ sudo passwd kevin
+$ sudo su - kevin
 $ mkdir .ssh
 $ chmod 700 .ssh
 ```
@@ -32,7 +32,7 @@ $ sudo reboot 1
 1. Reconnect to the server by SSH on the user previously created
 
 ```
-$ sudo su - newuser
+$ sudo su - kevin
 ```
 
 2. Enter the command :
