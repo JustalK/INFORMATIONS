@@ -1,5 +1,7 @@
 # How to see the log of server with Kubernetes and Wireguard
 
+## Show the log for one api
+
 1. Connect with the VPN using wireguard
 
 ```
@@ -16,4 +18,10 @@ $ kubectl ns dev-smood-api
 
 ```
 $ sm docker:logs -p api-back -e dev
+```
+
+## Show the list of running pods
+
+```
+kubectl get pod -n dev-smood-api
 ```
