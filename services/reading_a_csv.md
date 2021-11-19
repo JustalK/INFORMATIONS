@@ -1,3 +1,7 @@
+# Reading a csv
+
+
+```
 const Promise = require('bluebird');
 const fcsv = require("fast-csv");
 const util = require('util');
@@ -85,7 +89,7 @@ const mergeMap = async function(array1,array2,mergeColumnsArray1,mergeColumnsArr
 const newColumn = function(array,nameAffectedColumn,nameResultColumn,fc) {
 	return array.map(function(x) {
 		let tmp = {};
-		tmp[nameResultColumn] = fc(x[nameAffectedColumn]);		
+		tmp[nameResultColumn] = fc(x[nameAffectedColumn]);
 		return Object.assign(x,tmp);
 	})
 }
@@ -124,3 +128,4 @@ module.exports = {
 	rearangeObject,
 	newColumn
 }
+```
