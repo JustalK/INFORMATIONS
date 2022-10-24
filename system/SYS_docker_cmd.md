@@ -1,5 +1,15 @@
 # Usefull command with docker
 
+## Keeping a docker running
+
+Create a dockerfile with the following
+
+```
+FROM ubuntu:latest
+
+ENTRYPOINT ["tail", "-f", "/dev/null"]
+```
+
 ## Show all docker
 
 ```
