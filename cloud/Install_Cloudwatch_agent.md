@@ -46,8 +46,7 @@ wget https://s3.amazonaws.com/amazoncloudwatch-agent/linux/amd64/latest/AmazonCl
 Install the agent:
 
 ```bash
-unzip AmazonCloudWatchAgent.zip
-sudo ./install.sh
+unzip AmazonCloudWatchAgent.zip && sudo ./install.sh
 ```
 
 Run the wizard and answer all questions:
